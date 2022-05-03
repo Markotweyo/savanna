@@ -27,20 +27,20 @@ function UserForm({ user, submitText, submitAction }) {
 
         <section className="flex flex-col field md:flex-row">
           <div>
-            <label htmlFor="first_name">First Name</label>
+            <label htmlFor="name">Name</label>
             <input
               type="text"
-              {...register('first_name', { required: true })}
+              {...register('name', { required: true })}
             />
             <span className="errors">
-              {errors.first_name && 'First name is required'}
+              {errors.name && 'First name is required'}
             </span>
           </div>
           <div className="mt-2 md:mt-0 md:ml-4">
-            <label htmlFor="last_name">Last Name</label>
+            <label htmlFor="last_name">Username</label>
             <input type="text" {...register('last_name', { required: true })} />
             <span className="errors">
-              {errors.last_name && 'Last name is required'}
+              {errors.username && 'Last name is required'}
             </span>
           </div>
         </section>

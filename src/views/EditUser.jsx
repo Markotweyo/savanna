@@ -7,7 +7,7 @@ import UserForm from '../components/UserForm'
 
 const fetchUser = async ({ queryKey }) => {
   const [_key, { id }] = queryKey
-  const response = await fetch(`http://localhost:3004/users/${id}`)
+  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
 
   if (!response.ok) {
     throw new Error(response.statusText)
@@ -24,7 +24,7 @@ function EditUser() {
   )
 
   const mutation = useMutation((updatedUser) =>
-    axios.put(`http://localhost:3004/users/${id}`, updatedUser)
+    axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, updatedUser)
   )
 
   const { isSuccess } = mutation

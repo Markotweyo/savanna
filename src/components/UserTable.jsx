@@ -20,7 +20,7 @@ function UserTable({ users }) {
   const queryClient = useQueryClient()
 
   const deleteMutation = useMutation(
-    (id) => axios.delete(`http://localhost:3004/users/${id}`),
+    (id) => axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`),
     {
       onSuccess: () => {
         queryClient.invalidateQueries()
@@ -47,10 +47,10 @@ function UserTable({ users }) {
       key={index}
     >
       <td>{user.id}</td>
-      <td>{user.first_name}</td>
-      <td>{user.last_name}</td>
+      <td>{user.name}</td>
+      <td>{user.username}</td>
       <td className="hover:underline">{user.email}</td>
-      <td>{user.gender}</td>
+     {/* <td>{user.gender}</td>*/}
       <td className="inline-flex border-none">
         <Link
           className="p-2 text-cyan-800 hover:text-cyan-500"
@@ -65,6 +65,7 @@ function UserTable({ users }) {
           <DeleteIcon />
         </button>
       </td>
+      <td>posts</td>
     </tr>
   ))
 
@@ -89,11 +90,12 @@ function UserTable({ users }) {
         <thead className="text-white bg-cyan-900">
           <tr className="py-4">
             <th className="w-1/12">Id</th>
-            <th className="w-3/12">First Name</th>
-            <th className="w-3/12">Last Name</th>
-            <th className="w-3/12">Email</th>
-            <th className="w-1/12">Gender</th>
+            <th className="w-3/12">Name</th>
+            <th className="w-2/12">Username</th>
+            <th className="w-2/12">Email</th>
+            {/*<th className="w-1/12">Gender</th>*/}
             <th className="w-1/12">Action</th>
+            <th className="w-1/12">Posts</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>

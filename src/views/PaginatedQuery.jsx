@@ -3,11 +3,11 @@ import { useQuery } from 'react-query'
 
 import UserTable from '../components/UserTable'
 
-const pageLimit = 15
+const pageLimit = 5
 
 const fetchUsers = async (page = 1) => {
   const response = await fetch(
-    `http://localhost:3004/users?_page=${page}&_limit=${pageLimit}`
+    `https://jsonplaceholder.typicode.com/users?_page=${page}&_limit=${pageLimit}`
   )
   // console.log(res.headers.get('Link')) // Can be used to validate pagination buttons
   return response.json()

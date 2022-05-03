@@ -6,10 +6,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import { AppContextProvider } from './store/app-context'
 
 import Navbar from './layout/Navbar'
-import BasicQuery from './views/BasicQuery'
-import InfiniteQuery from './views/InfiniteQuery'
 import PaginatedQuery from './views/PaginatedQuery'
-import CreateUser from './views/CreateUser'
 import EditUser from './views/EditUser'
 
 function App() {
@@ -25,18 +22,10 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <AppContextProvider>
             <Switch>
-              <Route path="/" exact>
-                <BasicQuery />
-              </Route>
-              <Route path="/paginated">
+              <Route path="/">
                 <PaginatedQuery />
               </Route>
-              <Route path="/infinite">
-                <InfiniteQuery />
-              </Route>
-              <Route path="/user/create">
-                <CreateUser />
-              </Route>
+              
               <Route path="/user/edit/:id">
                 <EditUser />
               </Route>
