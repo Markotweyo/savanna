@@ -22,10 +22,9 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <AppContextProvider>
             <Switch>
-              <Route path="/">
+              <Route path="/" exact>
                 <PaginatedQuery />
               </Route>
-              
               <Route path="/user/edit/:id">
                 <EditUser />
               </Route>

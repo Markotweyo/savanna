@@ -1,17 +1,25 @@
-import React, { useState, useContext } from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { useMutation, useQueryClient } from 'react-query'
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useMutation, useQueryClient } from 'react-query';
 
-import { AppContext } from '../store/app-context'
-import FlashAlert from './FlashAlert'
-import EditIcon from '../icons/edit'
-import DeleteIcon from '../icons/delete'
-import DeleteModal from './DeleteModal'
+import { AppContext } from '../store/app-context';
+import FlashAlert from './FlashAlert';
+import EditIcon from '../icons/edit';
+import DeleteIcon from '../icons/delete';
+import DeleteModal from './DeleteModal';
 
-import './table.css'
+import './table.css';
 
-function UserTable({ users }) {
+function UserTable({ users, posts }) {
+  console.log(users)
+  
+  console.log(posts)
+  
+  
+  const combinedData = users.map(user => ({...user, ...posts.find(post => post.id === user.id)}))
+  console.log(combinedData)
+
   // Delete Modal Show State
   const [deleteId, setDeleteId] = useState(0)
   const [showModal, setShowModal] = useState(false)
@@ -41,12 +49,12 @@ function UserTable({ users }) {
 
   const hideModal = () => setShowModal(false)
 
-  const rows = users.map((user, index) => (
+  const rows = combinedData.map((user, index) => (
     <tr
       className="bg-white border border-cyan-800 hover:bg-lime-100 active:bg-lime-700 active:text-lime-100"
       key={index}
     >
-      <td>{user.id}</td>
+      <td>{user.userId}</td>
       <td>{user.name}</td>
       <td>{user.username}</td>
       <td className="hover:underline">{user.email}</td>
@@ -65,7 +73,8 @@ function UserTable({ users }) {
           <DeleteIcon />
         </button>
       </td>
-      <td>posts</td>
+      <td>{user.title}</td>
+       
     </tr>
   ))
 
@@ -77,25 +86,17 @@ function UserTable({ users }) {
         deleteAction={onDelete}
         cancelAction={hideModal}
       />
-      <div className="flex items-center justify-between mb-4">
-        <Link
-          to="/user/create"
-          className="px-4 py-1 font-semibold text-teal-900 border-2 border-teal-700 rounded hover:border-none hover:bg-teal-800 hover:text-white"
-        >
-          Create User
-        </Link>
-        {flashMessage && <FlashAlert message={flashMessage} />}
-      </div>
+      
       <table className="table-fixed">
         <thead className="text-white bg-cyan-900">
           <tr className="py-4">
             <th className="w-1/12">Id</th>
-            <th className="w-3/12">Name</th>
-            <th className="w-2/12">Username</th>
-            <th className="w-2/12">Email</th>
+            <th className="w-1/12">Name</th>
+            <th className="w-1/12">Username</th>
+            <th className="w-1/12">Email</th>
             {/*<th className="w-1/12">Gender</th>*/}
             <th className="w-1/12">Action</th>
-            <th className="w-1/12">Posts</th>
+            <th className="w-3/12">Posts</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>

@@ -37,10 +37,10 @@ function UserForm({ user, submitText, submitAction }) {
             </span>
           </div>
           <div className="mt-2 md:mt-0 md:ml-4">
-            <label htmlFor="last_name">Username</label>
-            <input type="text" {...register('last_name', { required: true })} />
+            <label htmlFor="username">Username</label>
+            <input type="text" {...register('username', { required: true })} />
             <span className="errors">
-              {errors.username && 'Last name is required'}
+              {errors.username && 'Username is required'}
             </span>
           </div>
         </section>
@@ -61,17 +61,7 @@ function UserForm({ user, submitText, submitAction }) {
           </span>
         </section>
 
-        <section className="field">
-          <label htmlFor="gender">Gender</label>
-          <select {...register('gender', { required: true })}>
-            <option value=""></option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-          <span className="errors">
-            {errors.gender && 'Gender is required'}
-          </span>
-        </section>
+        
 
         <div className="flex mt-8 justify-between">
           <button
