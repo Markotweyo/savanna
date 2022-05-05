@@ -9,18 +9,9 @@ const fetchUsers = async (page = 1) => {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/users?_page=${page}&_limit=${pageLimit}`
   )
-  // console.log(res.headers.get('Link')) // Can be used to validate pagination buttons
   return response.json()
 }
 
-
-const fetchPosts = async (page = 1) => {
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${pageLimit}`
-  )
-
-  return response.json()
-}
 
 function PaginatedQuery() {
   const [page, setPage] = useState(1)
@@ -33,18 +24,7 @@ function PaginatedQuery() {
   )
   console.log(users)
 
-  const { data: posts } = useQuery(
-    ['posts', page],
-    () => fetchPosts(page),
-    {
-      keepPreviousData: true,
-    }
-  )
-  console.log(posts)
- 
-
- 
-
+  
   const prevPage = () => {
     if (page > 1) setPage(page - 1)
   }
@@ -61,7 +41,7 @@ function PaginatedQuery() {
 
         {isLoading && <div>Loading...</div>}
 
-        {status === 'success' && <UserTable users={users} posts={posts}/>}
+        {status === 'success' && <UserTable users={users} />}
       </div>
       <div className="flex mt-4 justify-between items-center">
         <button

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useMutation, useQueryClient } from 'react-query';
 
+//import PostAddIcon from '@mui/icons-material/PostAdd';
+
 import { AppContext } from '../store/app-context';
 import FlashAlert from './FlashAlert';
 import EditIcon from '../icons/edit';
@@ -10,15 +12,11 @@ import DeleteIcon from '../icons/delete';
 import DeleteModal from './DeleteModal';
 
 import './table.css';
+import UserPost from '../views/UserPost';
 
-function UserTable({ users, posts }) {
+function UserTable({ users}) {
   console.log(users)
   
-  console.log(posts)
-  
-  
-  const combinedData = users.map(user => ({...user, ...posts.find(post => post.id === user.id)}))
-  console.log(combinedData)
 
   // Delete Modal Show State
   const [deleteId, setDeleteId] = useState(0)
@@ -49,12 +47,12 @@ function UserTable({ users, posts }) {
 
   const hideModal = () => setShowModal(false)
 
-  const rows = combinedData.map((user, index) => (
+  const rows = users.map((user, index) => (
     <tr
       className="bg-white border border-cyan-800 hover:bg-lime-100 active:bg-lime-700 active:text-lime-100"
       key={index}
     >
-      <td>{user.userId}</td>
+      <td>{user.id}</td>
       <td>{user.name}</td>
       <td>{user.username}</td>
       <td className="hover:underline">{user.email}</td>
@@ -73,7 +71,21 @@ function UserTable({ users, posts }) {
           <DeleteIcon />
         </button>
       </td>
-      <td>{user.title}</td>
+      
+      <td>
+        <Link
+          className="p-2 text-cyan-800 hover:text-cyan-500"
+          to={{
+            pathname:`/userpost/${user.id}`,
+            state: user.name
+
+          }}
+        >
+          <UserPost/>
+        </Link>
+        
+      </td>
+     
        
     </tr>
   ))
@@ -91,12 +103,12 @@ function UserTable({ users, posts }) {
         <thead className="text-white bg-cyan-900">
           <tr className="py-4">
             <th className="w-1/12">Id</th>
-            <th className="w-1/12">Name</th>
+            <th className="w-2/12">Name</th>
             <th className="w-1/12">Username</th>
-            <th className="w-1/12">Email</th>
+            <th className="w-2/12">Email</th>
             {/*<th className="w-1/12">Gender</th>*/}
             <th className="w-1/12">Action</th>
-            <th className="w-3/12">Posts</th>
+            <th className="w-2/12">Posts</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>

@@ -8,6 +8,7 @@ import { AppContextProvider } from './store/app-context'
 import Navbar from './layout/Navbar'
 import PaginatedQuery from './views/PaginatedQuery'
 import EditUser from './views/EditUser'
+import UserPost from './views/UserPost'
 
 function App() {
   // Create a client
@@ -27,6 +28,9 @@ function App() {
               </Route>
               <Route path="/user/edit/:id">
                 <EditUser />
+              </Route>
+              <Route path="/userpost/:id">
+                <UserPost />
               </Route>
             </Switch>
           </AppContextProvider>
