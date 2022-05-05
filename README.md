@@ -1,11 +1,19 @@
-# React Query Example
+# Savannah Interview Assignment
 
-This project is a demonstration of how to use [React Query](https://react-query.tanstack.com) library to perform the following frontend API requests:
+The goal of this small project is to create a small webApp displaying users and their related posts (data are located on jsonplaceholder).
 
-- Basic query
-- Paginated query
-- Infinite query
-- Create, Update and Delete requests
+Use this project, which has already yarn configured and the table of users implemented. The architecture of the project is up to you. Please code as you would do in your everyday work.
+
+## Specifications
+- Add the option to fetch each user posts on jsonplaceholder and display them with their user.
+- The name of each user should be editable, and should send the update to the server (note that the update is faked on jsonplaceholder).
+- Display the number of users living in an Appt, and in a Suite (field address.suite)
+## Rules
+- add spinners while information is loading
+- use open-sourced tools
+- utilize any css method (sass, less, css modules, bootstrap, MUI, ...)
+- use Redux or any modern state management module
+- split the application into different pages
 
 This demo project is setup with:
 
@@ -23,13 +31,13 @@ I've written a breakdown article for this project which is available on [Sitepoi
 Clone the project
 
 ```bash
-  git clone git@github.com:brandiqa/react-query-demo.git
+  git clone https://github.com/Markotweyo/savanna.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd react-query-demo
+  cd savanna
 ```
 
 Install dependencies
@@ -38,46 +46,5 @@ Install dependencies
   npm install
 ```
 
-Setup database file
-
-```bash
-cp api/sample.db.json api/db.json
-```
-
-Start the `json-server`
-
-```bash
-  npm run json-server
-```
-
-Launch another terminal and start the Vite server
-
-```bash
-  npm run dev
-```
 
 Head over to your browser and open the URL `localhost:3000` to access the application
-
-## License
-
-[MIT License](https://choosealicense.com/licenses/mit/)
-
-Copyright (c) 2021 Michael Wanyoike
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
