@@ -4,6 +4,7 @@ import { useQuery, useMutation } from 'react-query'
 import { useParams, Redirect } from 'react-router-dom'
 
 import UserForm from '../components/UserForm'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const fetchUser = async ({ queryKey }) => {
   const [_key, { id }] = queryKey
@@ -43,7 +44,7 @@ function EditUser() {
       <div>
         {isError && <div>{error.message}</div>}
 
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <div><LoadingSpinner/></div>}
 
         {data && (
           <UserForm user={data} submitText="Update" submitAction={onSubmit} />

@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import {useParams} from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
+import LoadingSpinner from '../components/LoadingSpinner';
 
 
  const fetchPost = async (id)=> {
@@ -31,7 +32,7 @@ const UserPost = () => {
       <div>
         {isError && <div>{error.message}</div>}
 
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <div><LoadingSpinner/> </div>}
 
         {data?.map((post)=> <div key={post.id}>
             <h2>{post.id}. {post.title}</h2>

@@ -5,12 +5,12 @@ import './navbar.css'
 
 function Navbar() {
   return (
-    <nav className="container flex mx-auto p-4 justify-between lg:w-screen-lg">
+    <div className="container flex mx-auto p-4 justify-between lg:w-screen-lg">
       <Link className="w-full" to="/">
-        <img src="/logo.svg" alt="React Query" width="200" />
+        <h1>Web App</h1>
       </Link>
       
-    </nav>
+    </div>
   )
 }
 

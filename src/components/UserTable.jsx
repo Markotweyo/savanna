@@ -83,10 +83,8 @@ function UserTable({ users}) {
         >
           <UserPost/>
         </Link>
-        
       </td>
-     
-       
+      
     </tr>
   ))
 
@@ -113,6 +111,7 @@ function UserTable({ users}) {
         </thead>
         <tbody>{rows}</tbody>
       </table>
+    
     </React.Fragment>
   )
 }

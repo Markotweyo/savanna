@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 import UserTable from '../components/UserTable'
 
@@ -39,7 +40,7 @@ function PaginatedQuery() {
       <div>
         {isError && <div>{error.message}</div>}
 
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <div><LoadingSpinner/></div>}
 
         {status === 'success' && <UserTable users={users} />}
       </div>
